@@ -67,37 +67,37 @@ class MainActivity : AppCompatActivity() {
                 R.id.nav_message -> Toast.makeText(
                     applicationContext,
                     "Clicked Message",
-                    Toast.LENGTH_LONG
+                    Toast.LENGTH_SHORT
                 ).show()
                 R.id.nav_sync -> Toast.makeText(
                     applicationContext,
                     "Clicked Sync",
-                    Toast.LENGTH_LONG
+                    Toast.LENGTH_SHORT
                 ).show()
                 R.id.nav_trash -> Toast.makeText(
                     applicationContext,
                     "Clicked Trash",
-                    Toast.LENGTH_LONG
+                    Toast.LENGTH_SHORT
                 ).show()
                 R.id.nav_setting -> Toast.makeText(
                     applicationContext,
                     "Clicked Setting",
-                    Toast.LENGTH_LONG
+                    Toast.LENGTH_SHORT
                 ).show()
                 R.id.nav_login -> Toast.makeText(
                     applicationContext,
                     "Clicked Login",
-                    Toast.LENGTH_LONG
+                    Toast.LENGTH_SHORT
                 ).show()
                 R.id.nav_share -> Toast.makeText(
                     applicationContext,
                     "Clicked Share",
-                    Toast.LENGTH_LONG
+                    Toast.LENGTH_SHORT
                 ).show()
                 R.id.nav_rate -> Toast.makeText(
                     applicationContext,
                     "Clicked Rate Us",
-                    Toast.LENGTH_LONG
+                    Toast.LENGTH_SHORT
                 ).show()
 
             }
@@ -159,13 +159,13 @@ class MainActivity : AppCompatActivity() {
         var checkNetworkConnection = CheckNetworkConnection(application)
         checkNetworkConnection.observe(this) { isConnected ->
             if (isConnected) {
-                Handler(Looper.getMainLooper()).postDelayed({}, 2000).run {
+                Handler(Looper.getMainLooper()).postDelayed({}, 1000).run {
                     jsonObjectRequest()
-                    Toast.makeText(applicationContext, "Wifi Connected", Toast.LENGTH_LONG)
+                    Toast.makeText(applicationContext, "Back Online", Toast.LENGTH_LONG)
                         .show()
                 }
             } else {
-                Toast.makeText(applicationContext, "Wifi Disconnected", Toast.LENGTH_LONG)
+                Toast.makeText(applicationContext, "No Internet", Toast.LENGTH_LONG)
                     .show()
             }
 
