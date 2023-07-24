@@ -1,11 +1,14 @@
 package com.example.onlinestore.activity
 
+import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
+import android.service.autofill.OnClickAction
 import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
+import android.widget.AdapterView.OnItemClickListener
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
@@ -21,6 +24,7 @@ import com.example.onlinestore.R
 import com.example.onlinestore.databinding.ActivityMainBinding
 import com.example.onlinestore.product.Product
 import com.example.onlinestore.product.ProductAdapter
+import com.example.onlinestore.product.ProductDetailsActivity
 import com.example.onlinestore.product.ProductResponse
 import com.google.android.material.navigation.NavigationView
 import com.google.gson.Gson
@@ -99,10 +103,8 @@ class MainActivity : AppCompatActivity() {
                     "Clicked Rate Us",
                     Toast.LENGTH_SHORT
                 ).show()
-
             }
             true
-
         }
 
 
@@ -112,6 +114,7 @@ class MainActivity : AppCompatActivity() {
             CoroutineScope(Dispatchers.Main).launch {
                 initRecyclerView()
             }
+
         }
         this.title = "Home"
     }
@@ -120,7 +123,6 @@ class MainActivity : AppCompatActivity() {
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
 
         menuInflater.inflate(R.menu.option_menu, menu)
-
         return true
     }
 
@@ -141,6 +143,10 @@ class MainActivity : AppCompatActivity() {
         binding.RecyclerView.layoutManager =
             LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
         binding.RecyclerView.adapter?.notifyDataSetChanged()
+        binding.RecyclerView.setOnClickListener {
+            val intent = Intent(this@MainActivity,ProductDetailsActivity::class.java)
+            startActivity(intent)
+        }
 
     }
 
